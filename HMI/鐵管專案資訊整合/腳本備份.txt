@@ -1,0 +1,130 @@
+//  auto_reply
+
+sub bool tokenCompare()
+	
+	// 計算token是否一致
+	char token_1[20],token_2[20]
+	GetData(token_1[0],"Local HMI",LW,90,20)	
+	GetData(token_2[0],"Local HMI",LW,300,20)// 回傳的Token
+	
+	bool res
+	res = StringCompare(token_1[0],token_2[0])
+	
+	return res
+end sub
+
+macro_command main()
+
+	short close = 0, open = 1
+	
+	char null[50]
+	FILL(null[0],0,50)
+	
+	short errCode 
+	GetData(errCode ,"Local HMI",LW,604,1)
+	SetData(errCode ,"Local HMI",LW,605,1)
+	
+	short meachineStatus
+	GetData(meachineStatus,"Local HMI",LW,401,1)
+	
+	short actionCode
+	GetData(actionCode,"Local HMI",LW,403,1)
+	
+	bool token_res
+	token_res = tokenCompare()
+	
+	if token_res  then	
+		SetData(close,"Local HMI",LB,270,1)//關閉timeout 機制
+		if errCode == 4001 then	
+		
+			SYNC_TRIG_MACRO(8)// 同步獲取token
+//			SetData(close ,"Local HMI",LB,605,1)// 顯示error
+			SetData(close,"Local HMI",LB,600,1)
+			
+			char empId[20],empName[20]// 獲取人員信息
+			GetData(empId[0] ,"Local HMI",LW,670,20)	
+			GetData(empName[0] ,"Local HMI",LW,660,20)
+			// 清空頁面顯示內容	
+			SetData(null[0] ,"Local HMI",LW,430,20)
+			SetData(null[0] ,"Local HMI",LW,420,20)	
+			SetData(null[0] ,"Local HMI",LW,620,40)
+			
+			short MQstatus
+			GetData(MQstatus,"Local HMI",LW,140,1)
+			
+			if meachineStatus == 6  then
+			
+				char text_FPno[40] = "首件確認單資料獲取中..."
+				SetData(text_FPno[0] ,"Local HMI",LW,620,40)
+				
+				if actionCode == 1 then
+					
+				end if
+				
+	//			SetData(empId[0] ,"Local HMI",LW,430,20)//寫入工時回報模組人員信息
+	//			SetData(empName[0] ,"Local HMI",LW,420,20)
+	//			SetData(open ,"Local HMI",LB,420,1)
+			else
+				SetData(open ,"Local HMI",LB,605,1)//開啟ID輸入介面文字提示
+				char text[40] = "資料回報中..."
+				if MQstatus == 2 then
+					if actionCode == 1 then
+						SetData(empId[0] ,"Local HMI",LW,430,20)//寫回工時回報模組人員信息
+						SetData(empName[0] ,"Local HMI",LW,420,20)	
+						
+						char text_start[40] = "開始-回報中..."
+						SetData(text_start[0] ,"Local HMI",LW,620,40)// 提示資料回傳中
+	//					SetData(text[0] ,"Local HMI",LW,620,40)
+	
+						SetData(open ,"Local HMI",LB,420,1)// 發送開始匯報的MQ
+						SetData(open,"Local HMI",LB,270,1)//打開timeout 機制
+						ASYNC_TRIG_MACRO(5)//	TIMEOUT計時開始	
+						
+					else if actionCode == 2 then
+					
+						SetData(empId[0] ,"Local HMI",LW,430,20)//寫回工時回報模組人員信息
+						SetData(empName[0] ,"Local HMI",LW,420,20)
+						
+				    	char text_end[40] = "結束-回報中..."
+						SetData(text_end[0] ,"Local HMI",LW,620,40)// 提示資料回傳中
+	//					SetData(text[0] ,"Local HMI",LW,620,40)
+	
+						SetData(open ,"Local HMI",LB,421,1)// 發送結束匯報的MQ
+						SetData(open,"Local HMI",LB,270,1)//打開timeout 機制
+						ASYNC_TRIG_MACRO(5)//	TIMEOUT計時開始	
+					else 
+						char text_err[40] = "未知錯誤....."
+						SetData(text_err[0] ,"Local HMI",LW,620,40)
+	//					SetData(close,"Local HMI",LW,604,1)
+	
+						SetData(open,"Local HMI",LB,606,1)//清空、取消
+						SetData(open,"Local HMI",LB,607,1)// 確定
+					end if	
+				else 
+					
+					char MQtext[40] = "MQ連線異常..."
+					SetData(open,"Local HMI",LB,605,1)//顯示提示
+					SetData(MQtext[0] ,"Local HMI",LW,620,40)
+					
+					SetData(open,"Local HMI",LB,606,1)//清空、取消
+					SetData(open,"Local HMI",LB,607,1)// 確定
+				end if
+			end if
+		
+		else 
+			char errText[40]
+			GetData(errText[0] ,"Local HMI",LW,640,40)
+			SetData(errText[0] ,"Local HMI",LW,620,40)
+			SetData(open ,"Local HMI",LB,605,1)// 顯示error
+			SetData(open ,"Local HMI",LB,600,1)
+			
+			SetData(open,"Local HMI",LB,606,1)//清空、取消
+			SetData(open,"Local HMI",LB,607,1)// 確定
+		end if	
+		
+	else
+		
+	end if
+	
+
+end macro_command

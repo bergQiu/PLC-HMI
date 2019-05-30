@@ -1,0 +1,43 @@
+﻿Version 4
+Publisher
+GetMachineSettingRequest,s190311HmiGetMachineSettingRequest,Address (Bit trigger),Compressed Off,Retain Off,QoS 2,JSON,Timestamp Off,Dynamic String,Local HMI,LW,System Tag Off,User-defined Tag Off,0,IDX null,Element Count 20,Top-level Key d Off
+,OFF->ON,Follow On,Local HMI,LB,System Tag Off,User-defined Tag Off,204,IDX null
+,ip,Word,Local HMI,IP,System Tag Off,User-defined Tag On,RW-130,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+,token,Word,Local HMI,Token,System Tag Off,User-defined Tag On,LW-90,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+CheckMachineSettingRequest,s190311HmiCheckMachineSettingRequest,Address (Bit trigger),Compressed Off,Retain Off,QoS 2,JSON,Timestamp Off,Dynamic String,Local HMI,LW,System Tag Off,User-defined Tag Off,0,IDX null,Element Count 20,Top-level Key d Off
+,OFF->ON,Follow On,Local HMI,LB,System Tag Off,User-defined Tag Off,205,IDX null
+,mid,Word,Local HMI,HMI_NAME,System Tag Off,User-defined Tag On,RW-10884,IDX null,String,Element Count 16,Unicode Off,Number of digits Off,4,Remove array On
+,ip,Word,Local HMI,IP,System Tag Off,User-defined Tag On,RW-130,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+,wa,Word,Local HMI,WA,System Tag Off,User-defined Tag On,RW-122,IDX null,String,Element Count 2,Unicode Off,Number of digits Off,4,Remove array On
+,hmiVersion,Word,Local HMI,PRO_Version,System Tag Off,User-defined Tag On,RW-100,IDX null,String,Element Count 20,Unicode Off,Number of digits Off,4,Remove array On
+,token,Word,Local HMI,Token,System Tag Off,User-defined Tag On,LW-90,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+AuthConfirmRequest,s190311HmiAuthConfirmRequest,Address (Bit trigger),Compressed Off,Retain Off,QoS 2,JSON,Timestamp Off,Dynamic String,Local HMI,LW,System Tag Off,User-defined Tag Off,0,IDX null,Element Count 20,Top-level Key d Off
+,OFF->ON,Follow On,Local HMI,LB,System Tag Off,User-defined Tag Off,603,IDX null
+,mid,Word,Local HMI,HMI_NAME,System Tag Off,User-defined Tag On,RW-10884,IDX null,String,Element Count 16,Unicode Off,Number of digits Off,4,Remove array On
+,wa,Word,Local HMI,WA,System Tag Off,User-defined Tag On,RW-122,IDX null,String,Element Count 2,Unicode Off,Number of digits Off,4,Remove array On
+,action,Word,Local HMI,LW,System Tag Off,User-defined Tag Off,401,IDX null,16-bit Unsigned,Element Count 1,Number of digits Off,4,Remove array On
+,empId,Word,Local HMI,LW,System Tag Off,User-defined Tag Off,610,IDX null,String,Element Count 5,Unicode Off,Number of digits Off,4,Remove array On
+,empCard,Word,Barcode Scanner/Keyboard,BARCODE,System Tag Off,User-defined Tag Off,1,IDX null,String,Element Count 5,Unicode Off,Number of digits Off,4,Remove array On
+,token,Word,Local HMI,Token,System Tag Off,User-defined Tag On,LW-90,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+BeginActionRequest,s190311HmiBeginActionRequest,Address (Bit trigger),Compressed Off,Retain Off,QoS 2,JSON,Timestamp Off,Dynamic String,Local HMI,LW,System Tag Off,User-defined Tag Off,0,IDX null,Element Count 20,Top-level Key d Off
+,OFF->ON,Follow On,Local HMI,LB,System Tag Off,User-defined Tag Off,420,IDX null
+,wa,Word,Local HMI,WA,System Tag Off,User-defined Tag On,RW-122,IDX null,String,Element Count 2,Unicode Off,Number of digits Off,4,Remove array On
+,mid,Word,Local HMI,HMI_NAME,System Tag Off,User-defined Tag On,RW-10884,IDX null,String,Element Count 16,Unicode Off,Number of digits Off,4,Remove array On
+,empId,Word,Local HMI,LW,System Tag Off,User-defined Tag Off,430,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+,action,Word,Local HMI,LW,System Tag Off,User-defined Tag Off,401,IDX null,16-bit Unsigned,Element Count 1,Number of digits Off,4,Remove array On
+,token,Word,Local HMI,Token,System Tag Off,User-defined Tag On,LW-90,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+EndActionRequest,s190311HmiEndActionRequest,Address (Bit trigger),Compressed Off,Retain Off,QoS 2,JSON,Timestamp Off,Dynamic String,Local HMI,LW,System Tag Off,User-defined Tag Off,0,IDX null,Element Count 20,Top-level Key d Off
+,OFF->ON,Follow On,Local HMI,LB,System Tag Off,User-defined Tag Off,421,IDX null
+,wa,Word,Local HMI,WA,System Tag Off,User-defined Tag On,RW-122,IDX null,String,Element Count 2,Unicode Off,Number of digits Off,4,Remove array On
+,mid,Word,Local HMI,HMI_NAME,System Tag Off,User-defined Tag On,RW-10884,IDX null,String,Element Count 16,Unicode Off,Number of digits Off,4,Remove array On
+,token,Word,Local HMI,Token,System Tag Off,User-defined Tag On,LW-90,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+,action,Word,Local HMI,LW,System Tag Off,User-defined Tag Off,401,IDX null,16-bit Unsigned,Element Count 1,Number of digits Off,4,Remove array On
+,empId,Word,Local HMI,LW,System Tag Off,User-defined Tag Off,430,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+GetFpnoRequest,s190311HmiGetFpnoRequest,Address (Bit trigger),Compressed Off,Retain Off,QoS 2,JSON,Timestamp Off,Dynamic String,Local HMI,LW,System Tag Off,User-defined Tag Off,0,IDX null,Element Count 20,Top-level Key d Off
+,OFF->ON,Follow On,Local HMI,LB,System Tag Off,User-defined Tag Off,424,IDX null
+,mid,Word,Local HMI,HMI_NAME,System Tag Off,User-defined Tag On,RW-10884,IDX null,String,Element Count 16,Unicode Off,Number of digits Off,4,Remove array On
+,wa,Word,Local HMI,WA,System Tag Off,User-defined Tag On,RW-122,IDX null,String,Element Count 2,Unicode Off,Number of digits Off,4,Remove array On
+,empId,Word,Local HMI,LW,System Tag Off,User-defined Tag Off,430,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+,token,Word,Local HMI,Token,System Tag Off,User-defined Tag On,LW-90,IDX null,String,Element Count 10,Unicode Off,Number of digits Off,4,Remove array On
+BeginFpnoRequest,s190311HmiBeginFpnoRequest,Address (Bit trigger),Compressed Off,Retain Off,QoS 2,JSON,Timestamp Off,Dynamic String,Local HMI,LW,System Tag Off,User-defined Tag Off,0,IDX null,Element Count 20,Top-level Key d Off
+,OFF->ON,Follow On,Local HMI,LB,System Tag Off,User-defined Tag Off,426,IDX null
